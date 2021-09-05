@@ -33,7 +33,7 @@
 
 
 
-### Diagramas de caso de uso
+### Diagramas caso de uso
 
 ![Caso uso administrador](./images/caso-uso-administrador.png)
 
@@ -49,8 +49,8 @@ Para la creación de la API se utilizan las siguientes tecnologías
 
 - [npm](https://www.npmjs.com/): es el administrador de paquetes para Node.js.
 
-- [Express](http://expressjs.com/):
-  - [body-parser](http://expressjs.com/en/resources/middleware/body-parser.html):
-- [nodemon](https://www.npmjs.com/package/nodemon):
+- [Express](http://expressjs.com/): con una gran variedad de métodos HTTP y middleware a disposición, para crear una API robusta rápido y fácil.
+
+- [nodemon](https://www.npmjs.com/package/nodemon): herramienta que ayuda a desarrollar aplicaciones basadas en node.js al reiniciar automáticamente la aplicación de node cuando se detectan cambios de archivo en el directorio.
 
 La forma de correr el proyecto es ejecutando el siguiente comando **`npm run start`**
