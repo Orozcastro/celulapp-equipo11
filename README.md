@@ -1,12 +1,10 @@
 # CelulApp
 # Api para celulares E-Commerce 
-## Integrantes del equipo 11
 
 Api para alta, baja y cambio de catálogos de celulares.
 La api cuenta con todos los métodos disponibles para ser utilizada desde una web app o app movil.
 
-
-## Integrantes
+## Integrantes del equipo 11
 
 - María Fernanda Orozco Castro [@Orozcastro](https://www.github.com/Orozcastro)
 
