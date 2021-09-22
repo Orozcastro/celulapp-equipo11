@@ -7,8 +7,8 @@ const {
 } = require('../controllers/celulares');
 
 router.get('/', obtenerCelulares);
-router.post('/', crearCelular);
-router.put('/:id', modificarCelular);
-router.delete('/:id', eliminarCelular);
+router.post('/crearCelular', crearCelular);
+router.put('/modificarCelular', modificarCelular);
+router.delete('/eliminarCelular:id', eliminarCelular);
 
 module.exports = router;

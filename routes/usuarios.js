@@ -8,8 +8,8 @@ const {
 } = require("../controllers/usuarios");
 
 router.get("/", obtenerUsuarios);
-router.post("/", crearUsuario);
-router.put("/:id", modificarUsuario);
-router.delete("/:id", eliminarUsuario);
+router.post("/crearUsuario", crearUsuario);
+router.put("/modificarUsuario", modificarUsuario);
+router.delete("/eliminarUsuario:id", eliminarUsuario);
 
 module.exports = router;

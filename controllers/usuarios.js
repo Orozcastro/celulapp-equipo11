@@ -2,7 +2,7 @@ const Usuario = require("../models/Usuario");
 
 // CRUD
 function crearUsuario(req, res) {
-  res.status(201).send("crearUsuario");
+  res.status(200).send("crearUsuario");
 }
 
 function obtenerUsuarios(req, res) {

@@ -1,0 +1,408 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Api venta de celulares",
+    "description": "Ecommerce",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    },
+    "contact": {
+      "name": "Equipo 11",
+      "email": "equipo11@web.com",
+      "url": "web.com"
+    }
+  },
+  "host": "localhost:4001",
+  "basePath": "/",
+  "paths": {
+    "/v1/usuarios/": {
+      "get": {
+        "summary": "Obtiene todos los usuarios.",
+        "tags": [
+          "Usuarios"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Devuelve el objeto con los usuarios.",
+            "schema": {
+              "$ref": "#/definitions/Usuario"
+            }
+          },
+          "400": {
+            "description": "BadRequest, Error al consultar los usuarios"
+          },
+          "401": {
+            "description": "Unauthorized. No se ha indicado o es incorrecto el Token JWT de acceso."
+          },
+          "404": {
+            "description": "NotFound. Usuarios no encontrados."
+          }
+        }
+      }
+    },
+    "/v1/usuarios/crearUsuario/": {
+      "post": {
+        "summary": "Crear nuevo usuario.",
+        "tags": [
+          "Usuarios"
+        ],
+        "parameters": [
+          {
+            "name": "usuario",
+            "in": "body",
+            "description": "",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/Usuario"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Devuelve el objeto con el usuario.",
+            "schema": {
+              "$ref": "#/definitions/Usuario"
+            }
+          },
+          "400": {
+            "description": "BadRequest, Error al guardar el usuario"
+          },
+          "401": {
+            "description": "Unauthorized. No se ha indicado o es incorrecto el Token JWT de acceso."
+          }
+        }
+      }
+    },
+    "/v1/usuarios/modificarUsuario": {
+      "put": {
+        "summary": "Modificar usuario.",
+        "tags": [
+          "Usuarios"
+        ],
+        "parameters": [
+          {
+            "name": "usuario",
+            "in": "body",
+            "description": "",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/Usuario"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Devuelve el objeto con el usuario.",
+            "schema": {
+              "$ref": "#/definitions/Usuario"
+            }
+          },
+          "400": {
+            "description": "BadRequest, Error al consultar usuario"
+          },
+          "401": {
+            "description": "Unauthorized. No se ha indicado o es incorrecto el Token JWT de acceso."
+          },
+          "404": {
+            "description": "NotFound. Usuario no encontrado."
+          }
+        }
+      }
+    },
+    "/v1/usuarios/eliminarUsuario": {
+      "delete": {
+        "summary": "Eliminar usuario.",
+        "tags": [
+          "Usuarios"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id Usuario",
+            "required": true,
+            "type": "string",
+            "format": "object"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Devuelve el objeto con el usuario.",
+            "schema": {
+              "$ref": "#/definitions/Usuario"
+            }
+          },
+          "400": {
+            "description": "BadRequest, Error al consultar usuario"
+          },
+          "401": {
+            "description": "Unauthorized. No se ha indicado o es incorrecto el Token JWT de acceso."
+          },
+          "404": {
+            "description": "NotFound. Usuario no encontrado."
+          }
+        }
+      }
+    },
+    "/v1/celulares/": {
+      "get": {
+        "summary": "Obtiene todos los celulares.",
+        "tags": [
+          "Celulares"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Devuelve el objeto con los celulares.",
+            "schema": {
+              "$ref": "#/definitions/Celular"
+            }
+          },
+          "400": {
+            "description": "BadRequest, Error al consultar los celulares"
+          },
+          "401": {
+            "description": "Unauthorized. No se ha indicado o es incorrecto el Token JWT de acceso."
+          },
+          "404": {
+            "description": "NotFound. Celulares no encontrados."
+          }
+        }
+      }
+    },
+    "/v1/celulares/crearCelular/": {
+      "post": {
+        "summary": "Crear nuevo celular.",
+        "tags": [
+          "Celulares"
+        ],
+        "parameters": [
+          {
+            "name": "celular",
+            "in": "body",
+            "description": "",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/Celular"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Devuelve el objeto con el celular.",
+            "schema": {
+              "$ref": "#/definitions/Celular"
+            }
+          },
+          "400": {
+            "description": "BadRequest, Error al guardar el celular"
+          },
+          "401": {
+            "description": "Unauthorized. No se ha indicado o es incorrecto el Token JWT de acceso."
+          }
+        }
+      }
+    },
+    "/v1/celulares/modificarCelular": {
+      "put": {
+        "summary": "Modificar celular.",
+        "tags": [
+          "Celulares"
+        ],
+        "parameters": [
+          {
+            "name": "celular",
+            "in": "body",
+            "description": "",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/Celular"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Devuelve el objeto con el celular.",
+            "schema": {
+              "$ref": "#/definitions/Celular"
+            }
+          },
+          "400": {
+            "description": "BadRequest, Error al consultar el celular"
+          },
+          "401": {
+            "description": "Unauthorized. No se ha indicado o es incorrecto el Token JWT de acceso."
+          },
+          "404": {
+            "description": "NotFound. Celular no encontrado."
+          }
+        }
+      }
+    },
+    "/v1/celulares/eliminarCelular": {
+      "delete": {
+        "summary": "Eliminar celular.",
+        "tags": [
+          "Celulares"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id Celular",
+            "required": true,
+            "type": "string",
+            "format": "object"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Devuelve el objeto con el celular.",
+            "schema": {
+              "$ref": "#/definitions/Celular"
+            }
+          },
+          "400": {
+            "description": "BadRequest, Error al consultar celular"
+          },
+          "401": {
+            "description": "Unauthorized. No se ha indicado o es incorrecto el Token JWT de acceso."
+          },
+          "404": {
+            "description": "NotFound. Celular no encontrado."
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Usuarios",
+      "description": "Administración de usuarios"
+    },
+    {
+      "name": "Celulares",
+      "description": "Administración de celulares"
+    }
+  ],
+  "definitions": {
+    "Usuario": {
+      "required": [
+        "username",
+        "nombre",
+        "apellido",
+        "email",
+        "tipo",
+        "status"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "username": {
+          "maxLength": 10,
+          "minLength": 7,
+          "type": "string"
+        },
+        "nombre": {
+          "maxLength": 20,
+          "minLength": 3,
+          "type": "string"
+        },
+        "apellido": {
+          "maxLength": 15,
+          "minLength": 3,
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "format": "password",
+          "maxLength": 17,
+          "minLength": 8,
+          "pattern": "^((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])|(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^a-zA-Z0-9])|(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[^a-zA-Z0-9])|(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^a-zA-Z0-9])).{8,}$",
+          "type": "string"
+        },
+        "tipo": {
+          "type": "string",
+          "enum": [
+            "Administrador",
+            "Comprador",
+            "Ventas"
+          ]
+        },
+        "status": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Celular": {
+      "required": [
+        "marca",
+        "modelo",
+        "sistemaOperativo",
+        "ram",
+        "almacenamiento",
+        "color"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "marca": {
+          "maxLength": 10,
+          "minLength": 4,
+          "type": "string"
+        },
+        "modelo": {
+          "maxLength": 20,
+          "minLength": 4,
+          "type": "string"
+        },
+        "sistemaOperativo": {
+          "maxLength": 10,
+          "minLength": 3,
+          "type": "string"
+        },
+        "ram": {
+          "maxLength": 10,
+          "minLength": 3,
+          "type": "string"
+        },
+        "almacenamiento": {
+          "maxLength": 10,
+          "minLength": 3,
+          "type": "string"
+        },
+        "color": {
+          "maxLength": 10,
+          "minLength": 3,
+          "type": "string"
+        }
+      }
+    }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "securityDefinitions": {
+    "Bearer": {
+      "name": "Authorization",
+      "in": "header",
+      "type": "apiKey",
+      "description": "Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\""
+    }
+  },
+  "security": [
+    {
+      "Bearer": []
+    }
+  ]
+}
