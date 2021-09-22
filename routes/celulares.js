@@ -9,6 +9,6 @@ const {
 router.get('/', obtenerCelulares);
 router.post('/crearCelular', crearCelular);
 router.put('/modificarCelular', modificarCelular);
-router.delete('/eliminarCelular:id', eliminarCelular);
+router.delete('/eliminarCelular/:id', eliminarCelular);
 
 module.exports = router;

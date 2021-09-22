@@ -50,10 +50,10 @@
         ],
         "parameters": [
           {
-            "name": "usuario",
+            "name": "Usuario",
             "in": "body",
             "description": "",
-            "required": false,
+            "required": true,
             "schema": {
               "$ref": "#/definitions/Usuario"
             }
@@ -63,7 +63,7 @@
           "200": {
             "description": "OK. Devuelve el objeto con el usuario.",
             "schema": {
-              "$ref": "#/definitions/Usuario"
+              "$ref": "#/components/schemas/User"
             }
           },
           "400": {
@@ -83,12 +83,12 @@
         ],
         "parameters": [
           {
-            "name": "usuario",
+            "name": "Usuario",
             "in": "body",
             "description": "",
-            "required": false,
+            "required": true,
             "schema": {
-              "$ref": "#/definitions/Usuario"
+              "$ref": "#/definitions/UserUpdate"
             }
           }
         ],
@@ -96,7 +96,7 @@
           "200": {
             "description": "OK. Devuelve el objeto con el usuario.",
             "schema": {
-              "$ref": "#/definitions/Usuario"
+              "$ref": "#/components/schemas/UserUpdate"
             }
           },
           "400": {
@@ -111,7 +111,7 @@
         }
       }
     },
-    "/v1/usuarios/eliminarUsuario": {
+    "/v1/usuarios/eliminarUsuario/{id}": {
       "delete": {
         "summary": "Eliminar usuario.",
         "tags": [
@@ -182,7 +182,7 @@
             "name": "celular",
             "in": "body",
             "description": "",
-            "required": false,
+            "required": true,
             "schema": {
               "$ref": "#/definitions/Celular"
             }
@@ -192,7 +192,7 @@
           "200": {
             "description": "OK. Devuelve el objeto con el celular.",
             "schema": {
-              "$ref": "#/definitions/Celular"
+              "$ref": "#/components/schemas/Celular"
             }
           },
           "400": {
@@ -215,9 +215,9 @@
             "name": "celular",
             "in": "body",
             "description": "",
-            "required": false,
+            "required": true,
             "schema": {
-              "$ref": "#/definitions/Celular"
+              "$ref": "#/definitions/CelularUpdate"
             }
           }
         ],
@@ -225,7 +225,7 @@
           "200": {
             "description": "OK. Devuelve el objeto con el celular.",
             "schema": {
-              "$ref": "#/definitions/Celular"
+              "$ref": "#/components/schemas/CelularUpdate"
             }
           },
           "400": {
@@ -240,7 +240,7 @@
         }
       }
     },
-    "/v1/celulares/eliminarCelular": {
+    "/v1/celulares/eliminarCelular/{id}": {
       "delete": {
         "summary": "Eliminar celular.",
         "tags": [
@@ -286,6 +286,128 @@
       "description": "Administración de celulares"
     }
   ],
+  "components": {
+    "schemas": {
+      "User": {
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "username"
+        ]
+      },
+      "UserUpdate": {
+        "required": [
+          "id",
+          "username",
+          "nombre",
+          "apellido",
+          "email",
+          "tipo",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "apellido": {
+            "type": "string"
+          },
+          "email": {
+            "format": "email",
+            "type": "string"
+          },
+          "tipo": {
+            "type": "string",
+            "enum": [
+              "Administrador",
+              "Comprador",
+              "Ventas"
+            ]
+          },
+          "status": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Celular": {
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "marca": {
+            "type": "string"
+          },
+          "modelo": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "marca",
+          "modelo"
+        ]
+      },
+      "CelularUpdate": {
+        "required": [
+          "id",
+          "marca",
+          "modelo",
+          "sistemaOperativo",
+          "ram",
+          "almacenamiento",
+          "color"
+        ],
+        "type": "object",
+        "properties": {
+          "id":{"type":"string"},
+          "marca": {
+            "maxLength": 10,
+            "minLength": 4,
+            "type": "string"
+          },
+          "modelo": {
+            "maxLength": 20,
+            "minLength": 4,
+            "type": "string"
+          },
+          "sistemaOperativo": {
+            "maxLength": 10,
+            "minLength": 3,
+            "type": "string"
+          },
+          "ram": {
+            "maxLength": 10,
+            "minLength": 3,
+            "type": "string"
+          },
+          "almacenamiento": {
+            "maxLength": 10,
+            "minLength": 3,
+            "type": "string"
+          },
+          "color": {
+            "maxLength": 10,
+            "minLength": 3,
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
   "definitions": {
     "Usuario": {
       "required": [
@@ -293,6 +415,58 @@
         "nombre",
         "apellido",
         "email",
+        "password",
+        "tipo",
+        "status"
+      ],
+      "type": "object",
+      "properties": {
+        "username": {
+          "maxLength": 10,
+          "minLength": 7,
+          "type": "string"
+        },
+        "nombre": {
+          "maxLength": 20,
+          "minLength": 3,
+          "type": "string"
+        },
+        "apellido": {
+          "maxLength": 15,
+          "minLength": 3,
+          "type": "string"
+        },
+        "email": {
+          "format": "email",
+          "type": "string"
+        },
+        "password": {
+          "maxLength": 15,
+          "minLength": 6,
+          "format": "password",
+          "type": "string"
+        },
+        "tipo": {
+          "type": "string",
+          "enum": [
+            "Administrador",
+            "Comprador",
+            "Ventas"
+          ]
+        },
+        "status": {
+          "type": "boolean"
+        }
+      }
+    },
+    "UserUpdate": {
+      "required": [
+        "id",
+        "username",
+        "nombre",
+        "apellido",
+        "email",
+        "password",
         "tipo",
         "status"
       ],
@@ -317,13 +491,13 @@
           "type": "string"
         },
         "email": {
+          "format": "email",
           "type": "string"
         },
         "password": {
+          "maxLength": 15,
+          "minLength": 6,
           "format": "password",
-          "maxLength": 17,
-          "minLength": 8,
-          "pattern": "^((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])|(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^a-zA-Z0-9])|(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[^a-zA-Z0-9])|(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^a-zA-Z0-9])).{8,}$",
           "type": "string"
         },
         "tipo": {
@@ -350,9 +524,51 @@
       ],
       "type": "object",
       "properties": {
-        "id": {
+        "marca": {
+          "maxLength": 10,
+          "minLength": 4,
           "type": "string"
         },
+        "modelo": {
+          "maxLength": 20,
+          "minLength": 4,
+          "type": "string"
+        },
+        "sistemaOperativo": {
+          "maxLength": 10,
+          "minLength": 3,
+          "type": "string"
+        },
+        "ram": {
+          "maxLength": 10,
+          "minLength": 3,
+          "type": "string"
+        },
+        "almacenamiento": {
+          "maxLength": 10,
+          "minLength": 3,
+          "type": "string"
+        },
+        "color": {
+          "maxLength": 10,
+          "minLength": 3,
+          "type": "string"
+        }
+      }
+    },
+    "CelularUpdate": {
+      "required": [
+        "id",
+        "marca",
+        "modelo",
+        "sistemaOperativo",
+        "ram",
+        "almacenamiento",
+        "color"
+      ],
+      "type": "object",
+      "properties": {
+        "id":{"type":"string"},
         "marca": {
           "maxLength": 10,
           "minLength": 4,

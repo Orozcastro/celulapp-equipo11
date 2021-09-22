@@ -10,6 +10,6 @@ const {
 router.get("/", obtenerUsuarios);
 router.post("/crearUsuario", crearUsuario);
 router.put("/modificarUsuario", modificarUsuario);
-router.delete("/eliminarUsuario:id", eliminarUsuario);
+router.delete("/eliminarUsuario/:id", eliminarUsuario);
 
 module.exports = router;
