@@ -1,13 +1,50 @@
-class Usuario {
-  constructor(id, username, nombre, apellido, email, password, tipo, status) {
-    this.id = id;
-    this.username = username;
-    this.nombre = nombre;
-    this.apellido = apellido;
-    this.email = email;
-    this.password = password;
-    this.tipo = tipo;
-    this.status = status;
+// mongoose
+const mongoose = require("mongoose");
+const uniqueValidator = require("mongoose-unique-validator");
+
+const UsuarioSchema = new mongoose.Schema(
+  {
+    username: {
+      type: String,
+      unique: true,
+      lowercase: true,
+      required: [true, "no puede estar vacío"],
+      match: [/^[a-zA-Z0-9]+$/, "es inválido"],
+      index: true,
+    },
+    nombre: { type: String, required: true },
+    apellido: { type: String, required: true },
+    email: {
+      type: String,
+      unique: true,
+      lowercase: true,
+      required: [true, "no puede estar vacío"],
+      match: [/\S+@\S+\.\S+/, "es inválido"],
+      index: true,
+    },
+    tipo: { type: String, enum: ["Administrador", "Usuario", "Vendedor"] },
+    hash: String,
+    salt: String,
+    status: { type: String, enum: [0, 1] },
+  },
+  {
+    collection: "usuarios",
+    timestamps: true,
   }
-}
-module.exports = Usuario;
+);
+
+UsuarioSchema.plugin(uniqueValidator, { message: "Ya existe" });
+
+UsuarioSchema.methods.publicData = () => {
+  return {
+    id: this.id,
+    username: this.username,
+    nombre: this.nombre,
+    apellido: this.apellido,
+    email: this.email,
+    tipo: this.tipo,
+    status: this.status,
+  };
+};
+
+mongoose.model("Usuario", UsuarioSchema);

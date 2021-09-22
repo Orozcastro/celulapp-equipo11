@@ -17,7 +17,7 @@ mongoose.connect(
 mongoose.set("debug", true);
 
 //modelos
-require("./models/usuario");
+require("./models/Usuario");
 // require("./models/celulares");
 
 // Rutas globales
