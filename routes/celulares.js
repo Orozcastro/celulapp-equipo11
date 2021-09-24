@@ -7,7 +7,10 @@ const {
   obtenerCelularesPorMarca,
   obtenerCelularesPorSO,
   obtenerCelularesPorRAM,
+  obtenerPropiedadesEspecificas,
 } = require('../controllers/celulares');
+
+router.get('/propiedades', obtenerPropiedadesEspecificas);
 
 router.get('/', obtenerCelulares);
 router.post('/', crearCelular);

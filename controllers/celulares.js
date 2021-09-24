@@ -80,6 +80,15 @@ function obtenerCelularesPorRAM(req, res, next) {
     .catch(next);
 }
 
+function obtenerPropiedadesEspecificas(req, res, next) {
+  let values = req.query.values;
+  Celular.find({}, values.replace(/,/g, ' '))
+    .then(celulares => {
+      res.send(celulares);
+    })
+    .catch(next);
+}
+
 function eliminarCelular(req, res, next) {
   Celular.findOneAndDelete({ _id: req.params.id })
     .then(c => {
@@ -96,4 +105,5 @@ module.exports = {
   obtenerCelularesPorMarca,
   obtenerCelularesPorSO,
   obtenerCelularesPorRAM,
+  obtenerPropiedadesEspecificas,
 };
