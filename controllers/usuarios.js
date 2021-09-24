@@ -108,8 +108,8 @@ function registrosLimitados(req, res, next) {
       $limit: limit,
     },
   ])
-    .then((r) => {
-      res.status(200).send(r);
+    .then((users) => {
+      return res.send(users.publicData());
     })
     .catch(next);
 }

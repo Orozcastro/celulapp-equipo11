@@ -47,7 +47,6 @@ UsuarioSchema.methods.crearPassword = function (password) {
 
 // // validar el password,
 UsuarioSchema.methods.validarPassword = function (password) {
-  // lo que se tiene en newhash(lo que dio el usuario) se compara con la cifrada que se guardo en la base de datos
   const newHash = crypto
     .pbkdf2Sync(password, this.salt, 10000, 512, "sha512")
     .toString("hex");
@@ -58,7 +57,7 @@ UsuarioSchema.methods.validarPassword = function (password) {
 UsuarioSchema.methods.generarJWT = function () {
   const today = new Date();
   const exp = new Date(today);
-  exp.setDate(today.getDate() + 30); // 60 días antes de expirar
+  exp.setDate(today.getDate() + 30);
 
   return jwt.sign(
     {

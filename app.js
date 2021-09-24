@@ -10,7 +10,8 @@ app.use(bodyParser.json());
 const mongoose = require("mongoose");
 
 mongoose.connect(
-  "mongodb+srv://equipo11:phoneapi11@cluster0.xpma4.mongodb.net/celulapp?retryWrites=true&w=majority"
+  "mongodb+srv://equipo11:phoneapi11@cluster0.xpma4.mongodb.net/celulapp?retryWrites=true&w=majority",
+  { useNewUrlParser: true }
 );
 
 // debugg
