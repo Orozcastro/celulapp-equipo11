@@ -103,11 +103,33 @@ function iniciarSesion(req, res, next) {
 }
 
 function coincidenciaAtributos(req, res, next) {
-  let atributo = req.params.atributo;
+  let matchAtribut = req.body;
+  var propiedad, atributo;
+  // Usuario.findById(req.usuario.id)
+  //   .then((user) => {
+  //     if (!user) {
+  //       return res.sendStatus(401);
+  //     }
+  if (typeof matchAtribut.nombre !== "undefined") {
+    propiedad = "nombre";
+    atributo = matchAtribut.nombre;
+  }
+  if (typeof matchAtribut.apellido !== "undefined") {
+    propiedad = "apellido";
+    atributo = matchAtribut.apellido;
+  }
+  if (typeof matchAtribut.tipo !== "undefined") {
+    propiedad = "tipo";
+    atributo = matchAtribut.tipo;
+  }
+  if (typeof matchAtribut.status !== "undefined") {
+    propiedad = "status";
+    atributo = matchAtribut.status;
+  }
   Usuario.aggregate([
     {
       $match: {
-        tipo: atributo,
+        apellido: atributo,
       },
     },
   ])
@@ -119,6 +141,22 @@ function coincidenciaAtributos(req, res, next) {
       return res.send(response);
     })
     .catch(next);
+  // let atributo = req.params.atributo;
+  // Usuario.aggregate([
+  //   {
+  //     $match: {
+  //       tipo: atributo,
+  //     },
+  //   },
+  // ])
+  //   .then((users) => {
+  //     let response = [];
+  //     users.forEach((user) => {
+  //       response.push(user.publicData());
+  //     });
+  //     return res.send(response);
+  //   })
+  //   .catch(next);
 }
 
 function registrosLimitados(req, res, next) {
