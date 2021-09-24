@@ -17,11 +17,21 @@
   "host": "localhost:4001",
   "basePath": "/",
   "paths": {
-    "/v1/usuarios/": {
+    "/v1/usuarios/{id}": {
       "get": {
         "summary": "Obtiene todos los usuarios.",
         "tags": [
           "Usuarios"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id Usuario",
+            "required": false,
+            "type": "string",
+            "format": "object"
+          }
         ],
         "security": [
           {
@@ -47,7 +57,7 @@
         }
       }
     },
-    "/v1/usuarios/crearUsuario/": {
+    "/v1/usuarios": {
       "post": {
         "summary": "Crear nuevo usuario.",
         "tags": [
@@ -325,16 +335,20 @@
     "schemas": {
       "User": {
         "properties": {
-          "id": {
+          "email": {
             "type": "string"
           },
           "username": {
             "type": "string"
+          },
+          "token": {
+            "type": "string"
           }
         },
         "required": [
-          "id",
-          "username"
+          "email",
+          "username",
+          "token"
         ]
       },
       "UserUpdate": {

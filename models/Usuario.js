@@ -38,6 +38,19 @@ const UsuarioSchema = new mongoose.Schema(
 
 UsuarioSchema.plugin(uniqueValidator, { message: "Ya existe" });
 
+// Public data
+UsuarioSchema.methods.publicData = function() {
+  return {
+    id: this.id,
+    username: this.username,
+    nombre: this.nombre,
+    apellido: this.apellido,
+    email: this.email,
+    tipo: this.tipo,
+    status: this.status,
+  };
+}
+
 UsuarioSchema.methods.crearPassword = function (password) {
   this.salt = crypto.randomBytes(16).toString("hex");
   this.hash = crypto
@@ -79,19 +92,7 @@ UsuarioSchema.methods.toAuthJSON = function () {
   };
 };
 
-// Public data
-UsuarioSchema.methods.publicData = function () {
-  return {
-    id: this.id,
-    username: this.username,
-    nombre: this.nombre,
-    apellido: this.apellido,
-    email: this.email,
-    tipo: this.tipo,
-    status: this.status,
-  };
-};
-mongoose.model("Usuario", UsuarioSchema);
+mongoose.model('Usuario', UsuarioSchema);
 
 /*** Informacion{
     "username": "ana",

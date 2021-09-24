@@ -21,19 +21,24 @@ function crearUsuario(req, res, next) {
 }
 
 function obtenerUsuarios(req, res, next) {
-  if (req.params.id) {
-    Usuario.findById(req.usuario.id)
-      .then((user) => {
-        if (!user) {
-          return res.sendStatus(401);
-        }
-        return res.json(user.publicData());
-      })
-      .catch(next);
-  } else {
+    if (req.params.id) {
+      Usuario.findById(req.params.id)
+        .then((user) => {
+          if (!user) {
+            return res.sendStatus(401);
+          }
+          return res.json(user.publicData());
+        })
+        .catch(next);
+    }
+  else {
     Usuario.find()
       .then((users) => {
-        return res.send(users.publicData());
+        let response = []
+        users.forEach(user => {
+          response.push(user.publicData())
+        })
+        return res.send(response);
       })
       .catch(next);
   }
