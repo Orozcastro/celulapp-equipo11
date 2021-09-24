@@ -20,6 +20,9 @@ mongoose.set("debug", true);
 require("./models/Usuario");
 // require("./models/celulares");
 
+// para la autenticacion
+require("./config/passport");
+
 // Rutas globales
 app.use("/v1", require("./routes"));
 
