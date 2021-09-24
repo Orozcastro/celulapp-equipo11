@@ -8,6 +8,7 @@ const {
 
 router.get('/', obtenerCelulares);
 router.post('/', crearCelular);
+router.get('/:id', obtenerCelulares);
 router.put('/:id', modificarCelular);
 router.delete('/:id', eliminarCelular);
 
