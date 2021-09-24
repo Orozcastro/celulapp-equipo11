@@ -22,21 +22,22 @@ function crearUsuario(req, res, next) {
 
 function obtenerUsuarios(req, res, next) {
   if (req.params.id) {
-  Usuario.findById(req.usuario.id, (err, user) => {
+    Usuario.findById(req.usuario.id, (err, user) => {
       if (!user || err) {
-        return res.sendStatus(401)
+        return res.sendStatus(401);
       }
       return res.json(user.publicData());
-  }).catch(next);
-  }else{
-     Usuario.find({}).then((users) => {
-      let response = []
-      users.forEach(user=>{
-        response.push(user.publicData())
+    }).catch(next);
+  } else {
+    Usuario.find({})
+      .then((users) => {
+        let response = [];
+        users.forEach((user) => {
+          response.push(user.publicData());
+        });
+        return res.send(response);
       })
-      return res.send(response);
-    })
-    .catch(next);
+      .catch(next);
   }
 }
 
@@ -101,19 +102,42 @@ function iniciarSesion(req, res, next) {
   )(req, res, next);
 }
 
+function coincidenciaAtributos(req, res, next) {
+  let atributo = req.params.atributo;
+  Usuario.aggregate([
+    {
+      $match: {
+        tipo: atributo,
+      },
+    },
+  ])
+    .then((users) => {
+      let response = [];
+      users.forEach((user) => {
+        response.push(user.publicData());
+      });
+      return res.send(response);
+    })
+    .catch(next);
+}
+
 function registrosLimitados(req, res, next) {
   let limit = parseInt(req.params.limit);
-
   Usuario.aggregate([
     {
       $limit: limit,
     },
   ])
     .then((users) => {
-      return res.send(users.publicData());
+      let response = [];
+      users.forEach((user) => {
+        response.push(user.publicData());
+      });
+      return res.send(response);
     })
     .catch(next);
 }
+
 module.exports = {
   crearUsuario,
   obtenerUsuarios,
@@ -121,4 +145,5 @@ module.exports = {
   eliminarUsuario,
   iniciarSesion,
   registrosLimitados,
+  coincidenciaAtributos,
 };

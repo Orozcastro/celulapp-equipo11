@@ -92,7 +92,8 @@ UsuarioSchema.methods.publicData = function () {
 };
 mongoose.model("Usuario", UsuarioSchema);
 
-/*** Informacion{
+/*** 
+{
     "username": "ana",
     "nombre": "ana",
     "apellido": "jgomez",
@@ -100,4 +101,5 @@ mongoose.model("Usuario", UsuarioSchema);
     "password": "123",
     "tipo": "Ventas",
     "status": "0"
-}*/
+}
+*/
