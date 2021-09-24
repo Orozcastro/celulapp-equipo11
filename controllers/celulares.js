@@ -19,6 +19,14 @@ function obtenerCelulares(req, res, next) {
         res.send(celular);
       })
       .catch(next);
+  } else if (req.query.limit) {
+    let lim = parseInt(req.query.limit);
+    Celular.find()
+      .limit(lim)
+      .then(celular => {
+        res.send(celular);
+      })
+      .catch(next);
   } else {
     Celular.find()
       .then(celular => {
@@ -45,6 +53,33 @@ function modificarCelular(req, res, next) {
     .catch(next);
 }
 
+function obtenerCelularesPorMarca(req, res, next) {
+  let marca = req.params.marca;
+  Celular.find({ marca: marca })
+    .then(celulares => {
+      res.send(celulares);
+    })
+    .catch(next);
+}
+
+function obtenerCelularesPorSO(req, res, next) {
+  let so = req.params.so;
+  Celular.find({ sistema_operativo: so })
+    .then(celulares => {
+      res.send(celulares);
+    })
+    .catch(next);
+}
+
+function obtenerCelularesPorRAM(req, res, next) {
+  let ram = req.params.ram;
+  Celular.find({ ram_gb: ram })
+    .then(celulares => {
+      res.send(celulares);
+    })
+    .catch(next);
+}
+
 function eliminarCelular(req, res, next) {
   Celular.findOneAndDelete({ _id: req.params.id })
     .then(c => {
@@ -58,4 +93,7 @@ module.exports = {
   obtenerCelulares,
   modificarCelular,
   eliminarCelular,
+  obtenerCelularesPorMarca,
+  obtenerCelularesPorSO,
+  obtenerCelularesPorRAM,
 };
