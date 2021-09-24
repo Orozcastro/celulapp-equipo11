@@ -23,6 +23,11 @@
         "tags": [
           "Usuarios"
         ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK. Devuelve el objeto con los usuarios.",
@@ -81,6 +86,11 @@
         "tags": [
           "Usuarios"
         ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
         "parameters": [
           {
             "name": "Usuario",
@@ -117,6 +127,11 @@
         "tags": [
           "Usuarios"
         ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -152,6 +167,11 @@
         "tags": [
           "Celulares"
         ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK. Devuelve el objeto con los celulares.",
@@ -176,6 +196,11 @@
         "summary": "Crear nuevo celular.",
         "tags": [
           "Celulares"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
         ],
         "parameters": [
           {
@@ -209,6 +234,11 @@
         "summary": "Modificar celular.",
         "tags": [
           "Celulares"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
         ],
         "parameters": [
           {
@@ -245,6 +275,11 @@
         "summary": "Eliminar celular.",
         "tags": [
           "Celulares"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
         ],
         "parameters": [
           {
@@ -615,10 +650,5 @@
       "type": "apiKey",
       "description": "Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\""
     }
-  },
-  "security": [
-    {
-      "Bearer": []
-    }
-  ]
+  }
 }
