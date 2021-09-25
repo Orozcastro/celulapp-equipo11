@@ -13,10 +13,9 @@ const {
 router.get('/propiedades', obtenerPropiedadesEspecificas);
 
 router.get('/', obtenerCelulares);
-router.post('/', crearCelular);
-router.get('/:id', obtenerCelulares);
-router.put('/:id', modificarCelular);
-router.delete('/:id', eliminarCelular);
+router.post('/crearCelular', crearCelular);
+router.put('/modificarCelular', modificarCelular);
+router.delete('/eliminarCelular/:id', eliminarCelular);
 
 router.get('/marca/:marca', obtenerCelularesPorMarca);
 router.get('/so/:so', obtenerCelularesPorSO);

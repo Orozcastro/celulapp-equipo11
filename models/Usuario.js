@@ -1,6 +1,9 @@
-// mongoose
+// mongoose Model Usuario
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
+const crypto = require("crypto");
+const jwt = require("jsonwebtoken");
+const secret = require("../config").secret;
 
 const UsuarioSchema = new mongoose.Schema(
   {
@@ -35,7 +38,8 @@ const UsuarioSchema = new mongoose.Schema(
 
 UsuarioSchema.plugin(uniqueValidator, { message: "Ya existe" });
 
-UsuarioSchema.methods.publicData = () => {
+// Public data
+UsuarioSchema.methods.publicData = function() {
   return {
     id: this.id,
     username: this.username,
@@ -45,6 +49,57 @@ UsuarioSchema.methods.publicData = () => {
     tipo: this.tipo,
     status: this.status,
   };
+}
+
+UsuarioSchema.methods.crearPassword = function (password) {
+  this.salt = crypto.randomBytes(16).toString("hex");
+  this.hash = crypto
+    .pbkdf2Sync(password, this.salt, 10000, 512, "sha512")
+    .toString("hex");
 };
 
-mongoose.model("Usuario", UsuarioSchema);
+// // validar el password,
+UsuarioSchema.methods.validarPassword = function (password) {
+  // lo que se tiene en newhash(lo que dio el usuario) se compara con la cifrada que se guardo en la base de datos
+  const newHash = crypto
+    .pbkdf2Sync(password, this.salt, 10000, 512, "sha512")
+    .toString("hex");
+  return this.hash === newHash; //
+};
+
+//JWT
+UsuarioSchema.methods.generarJWT = function () {
+  const today = new Date();
+  const exp = new Date(today);
+  exp.setDate(today.getDate() + 30); // 60 días antes de expirar
+
+  return jwt.sign(
+    {
+      id: this._id,
+      username: this.username,
+      exp: parseInt(exp.getTime() / 1000),
+    },
+    secret
+  );
+};
+
+//JSON Autentificado
+UsuarioSchema.methods.toAuthJSON = function () {
+  return {
+    username: this.username,
+    email: this.email,
+    token: this.generarJWT(),
+  };
+};
+
+mongoose.model('Usuario', UsuarioSchema);
+
+/*** Informacion{
+    "username": "ana",
+    "nombre": "ana",
+    "apellido": "jgomez",
+    "email": "agomez@gmail.com",
+    "password": "123",
+    "tipo": "Ventas",
+    "status": "0"
+}*/

@@ -1,0 +1,698 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Api venta de celulares",
+    "description": "Ecommerce",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    },
+    "contact": {
+      "name": "Equipo 11",
+      "email": "equipo11@web.com",
+      "url": "web.com"
+    }
+  },
+  "host": "localhost:4001",
+  "basePath": "/",
+  "paths": {
+    "/v1/usuarios/": {
+      "get": {
+        "summary": "Obtiene todos los usuarios.",
+        "tags": [
+          "Usuarios"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Devuelve el objeto con los usuarios.",
+            "schema": {
+              "$ref": "#/definitions/Usuario"
+            }
+          },
+          "400": {
+            "description": "BadRequest, Error al consultar los usuarios"
+          },
+          "401": {
+            "description": "Unauthorized. No se ha indicado o es incorrecto el Token JWT de acceso."
+          },
+          "404": {
+            "description": "NotFound. Usuarios no encontrados."
+          }
+        }
+      }
+    },    
+    "/v1/usuarios/{id}": {
+      "get": {
+        "summary": "Obtiene datos del usuario.",
+        "tags": [
+          "Usuarios"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id Usuario",
+            "required": false,
+            "type": "string",
+            "format": "object"
+          }
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Devuelve el objeto con los datos del usuario.",
+            "schema": {
+              "$ref": "#/definitions/Usuario"
+            }
+          },
+          "400": {
+            "description": "BadRequest, Error al consultar el usuario"
+          },
+          "401": {
+            "description": "Unauthorized. No se ha indicado o es incorrecto el Token JWT de acceso."
+          },
+          "404": {
+            "description": "NotFound. Usuario no encontrado."
+          }
+        }
+      }
+    },
+    "/v1/usuarios": {
+      "post": {
+        "summary": "Crear nuevo usuario.",
+        "tags": [
+          "Usuarios"
+        ],
+        "parameters": [
+          {
+            "name": "Usuario",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Usuario"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Devuelve el objeto con el usuario.",
+            "schema": {
+              "$ref": "#/components/schemas/User"
+            }
+          },
+          "400": {
+            "description": "BadRequest, Error al guardar el usuario"
+          },
+          "401": {
+            "description": "Unauthorized. No se ha indicado o es incorrecto el Token JWT de acceso."
+          }
+        }
+      }
+    },
+    "/v1/usuarios/modificarUsuario": {
+      "put": {
+        "summary": "Modificar usuario.",
+        "tags": [
+          "Usuarios"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Usuario",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Devuelve el objeto con el usuario.",
+            "schema": {
+              "$ref": "#/components/schemas/UserUpdate"
+            }
+          },
+          "400": {
+            "description": "BadRequest, Error al consultar usuario"
+          },
+          "401": {
+            "description": "Unauthorized. No se ha indicado o es incorrecto el Token JWT de acceso."
+          },
+          "404": {
+            "description": "NotFound. Usuario no encontrado."
+          }
+        }
+      }
+    },
+    "/v1/usuarios/eliminarUsuario/{id}": {
+      "delete": {
+        "summary": "Eliminar usuario.",
+        "tags": [
+          "Usuarios"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id Usuario",
+            "required": true,
+            "type": "string",
+            "format": "object"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Devuelve el objeto con el usuario.",
+            "schema": {
+              "$ref": "#/definitions/Usuario"
+            }
+          },
+          "400": {
+            "description": "BadRequest, Error al consultar usuario"
+          },
+          "401": {
+            "description": "Unauthorized. No se ha indicado o es incorrecto el Token JWT de acceso."
+          },
+          "404": {
+            "description": "NotFound. Usuario no encontrado."
+          }
+        }
+      }
+    },
+    "/v1/celulares/": {
+      "get": {
+        "summary": "Obtiene todos los celulares.",
+        "tags": [
+          "Celulares"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Devuelve el objeto con los celulares.",
+            "schema": {
+              "$ref": "#/definitions/Celular"
+            }
+          },
+          "400": {
+            "description": "BadRequest, Error al consultar los celulares"
+          },
+          "401": {
+            "description": "Unauthorized. No se ha indicado o es incorrecto el Token JWT de acceso."
+          },
+          "404": {
+            "description": "NotFound. Celulares no encontrados."
+          }
+        }
+      }
+    },
+    "/v1/celulares/crearCelular/": {
+      "post": {
+        "summary": "Crear nuevo celular.",
+        "tags": [
+          "Celulares"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "celular",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Celular"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Devuelve el objeto con el celular.",
+            "schema": {
+              "$ref": "#/components/schemas/Celular"
+            }
+          },
+          "400": {
+            "description": "BadRequest, Error al guardar el celular"
+          },
+          "401": {
+            "description": "Unauthorized. No se ha indicado o es incorrecto el Token JWT de acceso."
+          }
+        }
+      }
+    },
+    "/v1/celulares/modificarCelular": {
+      "put": {
+        "summary": "Modificar celular.",
+        "tags": [
+          "Celulares"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "celular",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CelularUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Devuelve el objeto con el celular.",
+            "schema": {
+              "$ref": "#/components/schemas/CelularUpdate"
+            }
+          },
+          "400": {
+            "description": "BadRequest, Error al consultar el celular"
+          },
+          "401": {
+            "description": "Unauthorized. No se ha indicado o es incorrecto el Token JWT de acceso."
+          },
+          "404": {
+            "description": "NotFound. Celular no encontrado."
+          }
+        }
+      }
+    },
+    "/v1/celulares/eliminarCelular/{id}": {
+      "delete": {
+        "summary": "Eliminar celular.",
+        "tags": [
+          "Celulares"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id Celular",
+            "required": true,
+            "type": "string",
+            "format": "object"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Devuelve el objeto con el celular.",
+            "schema": {
+              "$ref": "#/definitions/Celular"
+            }
+          },
+          "400": {
+            "description": "BadRequest, Error al consultar celular"
+          },
+          "401": {
+            "description": "Unauthorized. No se ha indicado o es incorrecto el Token JWT de acceso."
+          },
+          "404": {
+            "description": "NotFound. Celular no encontrado."
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Usuarios",
+      "description": "Administración de usuarios"
+    },
+    {
+      "name": "Celulares",
+      "description": "Administración de celulares"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "User": {
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "token": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "username",
+          "token"
+        ]
+      },
+      "UserUpdate": {
+        "required": [
+          "id",
+          "username",
+          "nombre",
+          "apellido",
+          "email",
+          "tipo",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "apellido": {
+            "type": "string"
+          },
+          "email": {
+            "format": "email",
+            "type": "string"
+          },
+          "tipo": {
+            "type": "string",
+            "enum": [
+              "Administrador",
+              "Comprador",
+              "Ventas"
+            ]
+          },
+          "status": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Celular": {
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "marca": {
+            "type": "string"
+          },
+          "modelo": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "marca",
+          "modelo"
+        ]
+      },
+      "CelularUpdate": {
+        "required": [
+          "id",
+          "marca",
+          "modelo",
+          "sistemaOperativo",
+          "ram",
+          "almacenamiento",
+          "color"
+        ],
+        "type": "object",
+        "properties": {
+          "id":{"type":"string"},
+          "marca": {
+            "maxLength": 10,
+            "minLength": 4,
+            "type": "string"
+          },
+          "modelo": {
+            "maxLength": 20,
+            "minLength": 4,
+            "type": "string"
+          },
+          "sistemaOperativo": {
+            "maxLength": 10,
+            "minLength": 3,
+            "type": "string"
+          },
+          "ram": {
+            "maxLength": 10,
+            "minLength": 3,
+            "type": "string"
+          },
+          "almacenamiento": {
+            "maxLength": 10,
+            "minLength": 3,
+            "type": "string"
+          },
+          "color": {
+            "maxLength": 10,
+            "minLength": 3,
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Usuario": {
+      "required": [
+        "username",
+        "nombre",
+        "apellido",
+        "email",
+        "password",
+        "tipo",
+        "status"
+      ],
+      "type": "object",
+      "properties": {
+        "username": {
+          "maxLength": 10,
+          "minLength": 7,
+          "type": "string"
+        },
+        "nombre": {
+          "maxLength": 20,
+          "minLength": 3,
+          "type": "string"
+        },
+        "apellido": {
+          "maxLength": 15,
+          "minLength": 3,
+          "type": "string"
+        },
+        "email": {
+          "format": "email",
+          "type": "string"
+        },
+        "password": {
+          "maxLength": 15,
+          "minLength": 6,
+          "format": "password",
+          "type": "string"
+        },
+        "tipo": {
+          "type": "string",
+          "enum": [
+            "Administrador",
+            "Comprador",
+            "Ventas"
+          ]
+        },
+        "status": {
+          "type": "boolean"
+        }
+      }
+    },
+    "UserUpdate": {
+      "required": [
+        "id",
+        "username",
+        "nombre",
+        "apellido",
+        "email",
+        "password",
+        "tipo",
+        "status"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "username": {
+          "maxLength": 10,
+          "minLength": 7,
+          "type": "string"
+        },
+        "nombre": {
+          "maxLength": 20,
+          "minLength": 3,
+          "type": "string"
+        },
+        "apellido": {
+          "maxLength": 15,
+          "minLength": 3,
+          "type": "string"
+        },
+        "email": {
+          "format": "email",
+          "type": "string"
+        },
+        "password": {
+          "maxLength": 15,
+          "minLength": 6,
+          "format": "password",
+          "type": "string"
+        },
+        "tipo": {
+          "type": "string",
+          "enum": [
+            "Administrador",
+            "Comprador",
+            "Ventas"
+          ]
+        },
+        "status": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Celular": {
+      "required": [
+        "marca",
+        "modelo",
+        "sistemaOperativo",
+        "ram",
+        "almacenamiento",
+        "color"
+      ],
+      "type": "object",
+      "properties": {
+        "marca": {
+          "maxLength": 10,
+          "minLength": 4,
+          "type": "string"
+        },
+        "modelo": {
+          "maxLength": 20,
+          "minLength": 4,
+          "type": "string"
+        },
+        "sistemaOperativo": {
+          "maxLength": 10,
+          "minLength": 3,
+          "type": "string"
+        },
+        "ram": {
+          "maxLength": 10,
+          "minLength": 3,
+          "type": "string"
+        },
+        "almacenamiento": {
+          "maxLength": 10,
+          "minLength": 3,
+          "type": "string"
+        },
+        "color": {
+          "maxLength": 10,
+          "minLength": 3,
+          "type": "string"
+        }
+      }
+    },
+    "CelularUpdate": {
+      "required": [
+        "id",
+        "marca",
+        "modelo",
+        "sistemaOperativo",
+        "ram",
+        "almacenamiento",
+        "color"
+      ],
+      "type": "object",
+      "properties": {
+        "id":{"type":"string"},
+        "marca": {
+          "maxLength": 10,
+          "minLength": 4,
+          "type": "string"
+        },
+        "modelo": {
+          "maxLength": 20,
+          "minLength": 4,
+          "type": "string"
+        },
+        "sistemaOperativo": {
+          "maxLength": 10,
+          "minLength": 3,
+          "type": "string"
+        },
+        "ram": {
+          "maxLength": 10,
+          "minLength": 3,
+          "type": "string"
+        },
+        "almacenamiento": {
+          "maxLength": 10,
+          "minLength": 3,
+          "type": "string"
+        },
+        "color": {
+          "maxLength": 10,
+          "minLength": 3,
+          "type": "string"
+        }
+      }
+    }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "securityDefinitions": {
+    "Bearer": {
+      "name": "Authorization",
+      "in": "header",
+      "type": "apiKey",
+      "description": "Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\""
+    }
+  }
+}
