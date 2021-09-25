@@ -4,7 +4,7 @@
 Api para alta, baja y cambio de catálogos de celulares.
 La api cuenta con todos los métodos disponibles para ser utilizada desde una web app o app movil.
 
-**Link de la API celulapp:** [https://celulapp.herokuapp.com/v1/celulares](https://celulapp.herokuapp.com/v1/celulares)
+**Link de la API celulapp:** [https://celulapp.herokuapp.com/v1](https://celulapp.herokuapp.com/v1)
 
 **Documentación de API celulapp (Swagger):** [https://celulapp.herokuapp.com/api-docs/](https://celulapp.herokuapp.com/api-docs/)
 
@@ -228,4 +228,4 @@ Una vez que la API está terminada es necesario el deploy de esta. Este proceso 
 
 Para hacer deploy de nuestra API utilizaremos la plataforma de [Heroku](https://www.heroku.com/). Esta plataforma nos permite probar aplicaciones de una manera rápida.
 
-**Link de la API celulapp:** [https://celulapp.herokuapp.com/v1/celulares](https://celulapp.herokuapp.com/v1/celulares)
+**Link de la API celulapp:** [https://celulapp.herokuapp.com/v1](https://celulapp.herokuapp.com/v1)
