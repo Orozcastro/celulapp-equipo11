@@ -20,6 +20,9 @@ function crearUsuario(req, res, next) {
     .catch(next);
 }
 
+
+
+
 function obtenerUsuarios(req, res, next) {
   if (req.params.id) {
     Usuario.findById(req.usuario.id, (err, user) => {
@@ -28,16 +31,17 @@ function obtenerUsuarios(req, res, next) {
       }
       return res.json(user.publicData());
     }).catch(next);
+
   } else {
     Usuario.find({})
-      .then((users) => {
-        let response = [];
-        users.forEach((user) => {
-          response.push(user.publicData());
-        });
-        return res.send(response);
-      })
-      .catch(next);
+    .then((users) => {
+      let response = [];
+      users.forEach((user) => {
+        response.push(user.publicData());
+      });
+      return res.send(response);
+    })
+    .catch(next);
   }
 }
 
@@ -160,13 +164,11 @@ function coincidenciaAtributos(req, res, next) {
 }
 
 function registrosLimitados(req, res, next) {
-  let limit = parseInt(req.params.limit);
-  Usuario.aggregate([
-    {
-      $limit: limit,
-    },
-  ])
-    .then((users) => {
+
+  let lim = parseInt(req.params.limit);
+    Usuario.find()
+    .limit(lim)
+    .then(users => {
       let response = [];
       users.forEach((user) => {
         response.push(user.publicData());
@@ -175,6 +177,8 @@ function registrosLimitados(req, res, next) {
     })
     .catch(next);
 }
+
+
 
 module.exports = {
   crearUsuario,
