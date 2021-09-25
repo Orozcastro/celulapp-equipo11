@@ -1,8 +1,12 @@
 # CelulApp
-# Api para celulares E-Commerce 
+# Api para celulares E-Commerce
 
 Api para alta, baja y cambio de catálogos de celulares.
 La api cuenta con todos los métodos disponibles para ser utilizada desde una web app o app movil.
+
+**Link de la API celulapp:** [https://celulapp.herokuapp.com/v1/celulares](https://celulapp.herokuapp.com/v1/celulares)
+
+**Documentación de API celulapp:** [Documentacion](link-documentacion)
 
 ## Integrantes del equipo 11
 
@@ -57,7 +61,7 @@ Ejecutar proyecto con npm
 | `almacenamiento` | `string` | Capacidad de Almacenamiento |
 | `color` | `string` | Color del celular |
 
-  
+
 ## Referencias API
 
 #### Obtener todos los usuarios
@@ -97,7 +101,7 @@ Ejecutar proyecto con npm
         "tipo": "Administrador",
         "status": "1"
     }
-```  
+```
 
 #### Eliminar usuario
 
@@ -112,7 +116,7 @@ Ejecutar proyecto con npm
         "password": "XXXX",
         "tipo": "Administrador",
         "status": "1"
-    }  
+    }
 ```
 
 #### Obtener todos los celulares
@@ -152,7 +156,7 @@ Ejecutar proyecto con npm
         "tipo": "Administrador",
         "color": "Rojo"
     }
-```  
+```
 
 #### Eliminar celular
 
@@ -217,3 +221,11 @@ Para la creación de la API se utilizan las siguientes tecnologías
 - [nodemon](https://www.npmjs.com/package/nodemon): herramienta que ayuda a desarrollar aplicaciones basadas en node.js al reiniciar automáticamente la aplicación de node cuando se detectan cambios de archivo en el directorio.
 
 La forma de correr el proyecto es ejecutando el siguiente comando **`npm run start`**
+
+## Deploy de la API
+
+Una vez que la API está terminada es necesario el deploy de esta. Este proceso se requiere para que cualquier persona pueda utilizar los servicios de nuestra API.
+
+Para hacer deploy de nuestra API utilizaremos la plataforma de [Heroku](https://www.heroku.com/). Esta plataforma nos permite probar aplicaciones de una manera rápida.
+
+**Link de la API celulapp:** [https://celulapp.herokuapp.com/v1/celulares](https://celulapp.herokuapp.com/v1/celulares)
