@@ -58,7 +58,7 @@
             "name": "id",
             "in": "path",
             "description": "Id Usuario",
-            "required": false,
+            "required": true,
             "type": "string",
             "format": "object"
           }
@@ -231,6 +231,166 @@
         }
       }
     },
+    "/v1/celulares/{1}": {
+      "get": {
+        "summary": "Obtiene datos del celular.",
+        "tags": [
+          "Celulares"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id Celular",
+            "required": true,
+            "type": "string",
+            "format": "object"
+          }
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Devuelve el objeto con datos del celular.",
+            "schema": {
+              "$ref": "#/definitions/Celular"
+            }
+          },
+          "400": {
+            "description": "BadRequest, Error al consultar el celular"
+          },
+          "401": {
+            "description": "Unauthorized. No se ha indicado o es incorrecto el Token JWT de acceso."
+          },
+          "404": {
+            "description": "NotFound. Celular no encontrados."
+          }
+        }
+      }
+    },
+    "/v1/celulares/marca/{marca}": {
+      "get": {
+        "summary": "Obtiene los celulares por marca.",
+        "tags": [
+          "Celulares"
+        ],
+        "parameters": [
+          {
+            "name": "marca",
+            "in": "path",
+            "description": "Marca",
+            "required": true,
+            "type": "string",
+            "format": "object"
+          }
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Devuelve el objeto con los celulares.",
+            "schema": {
+              "$ref": "#/definitions/Celular"
+            }
+          },
+          "400": {
+            "description": "BadRequest, Error al consultar"
+          },
+          "401": {
+            "description": "Unauthorized. No se ha indicado o es incorrecto el Token JWT de acceso."
+          },
+          "404": {
+            "description": "NotFound. Celulares no encontrados."
+          }
+        }
+      }
+    },
+    "/v1/celulares/so/{so}": {
+      "get": {
+        "summary": "Obtiene los celulares por Sistema operativo.",
+        "tags": [
+          "Celulares"
+        ],
+        "parameters": [
+          {
+            "name": "so",
+            "in": "path",
+            "description": "sistema Operativo",
+            "required": true,
+            "type": "string",
+            "format": "object"
+          }
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Devuelve el objeto con los celulares.",
+            "schema": {
+              "$ref": "#/definitions/Celular"
+            }
+          },
+          "400": {
+            "description": "BadRequest, Error al consultar"
+          },
+          "401": {
+            "description": "Unauthorized. No se ha indicado o es incorrecto el Token JWT de acceso."
+          },
+          "404": {
+            "description": "NotFound. Celulares no encontrados."
+          }
+        }
+      }
+    },
+    "/v1/celulares/ram/{ram}": {
+      "get": {
+        "summary": "Obtiene los celulares por RAM.",
+        "tags": [
+          "Celulares"
+        ],
+        "parameters": [
+          {
+            "name": "ram",
+            "in": "path",
+            "description": "RAM",
+            "required": true,
+            "type": "string",
+            "format": "object"
+          }
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Devuelve el objeto con los celulares.",
+            "schema": {
+              "$ref": "#/definitions/Celular"
+            }
+          },
+          "400": {
+            "description": "BadRequest, Error al consultar"
+          },
+          "401": {
+            "description": "Unauthorized. No se ha indicado o es incorrecto el Token JWT de acceso."
+          },
+          "404": {
+            "description": "NotFound. Celulares no encontrados."
+          }
+        }
+      }
+    },    
     "/v1/celulares/crearCelular/": {
       "post": {
         "summary": "Crear nuevo celular.",
