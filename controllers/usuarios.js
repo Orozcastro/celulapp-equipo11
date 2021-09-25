@@ -20,9 +20,6 @@ function crearUsuario(req, res, next) {
     .catch(next);
 }
 
-
-
-
 function obtenerUsuarios(req, res, next) {
   if (req.params.id) {
     Usuario.findById(req.usuario.id, (err, user) => {
@@ -31,17 +28,16 @@ function obtenerUsuarios(req, res, next) {
       }
       return res.json(user.publicData());
     }).catch(next);
-
   } else {
     Usuario.find({})
-    .then((users) => {
-      let response = [];
-      users.forEach((user) => {
-        response.push(user.publicData());
-      });
-      return res.send(response);
-    })
-    .catch(next);
+      .then((users) => {
+        let response = [];
+        users.forEach((user) => {
+          response.push(user.publicData());
+        });
+        return res.send(response);
+      })
+      .catch(next);
   }
 }
 
@@ -163,12 +159,10 @@ function coincidenciaAtributos(req, res, next) {
   //   .catch(next);
 }
 
-function registrosLimitados(req, res, next) {
-
-  let lim = parseInt(req.params.limit);
-    Usuario.find()
-    .limit(lim)
-    .then(users => {
+function obtenerUsuariosPorNombre(req, res, next) {
+  let nombre = req.params.nombre;
+  Usuario.find({ nombre: nombre })
+    .then((users) => {
       let response = [];
       users.forEach((user) => {
         response.push(user.publicData());
@@ -178,7 +172,56 @@ function registrosLimitados(req, res, next) {
     .catch(next);
 }
 
+function obtenerUsuariosPorApellido(req, res, next) {
+  let apellido = req.params.apellido;
+  Usuario.find({ apellido: apellido })
+    .then((users) => {
+      let response = [];
+      users.forEach((user) => {
+        response.push(user.publicData());
+      });
+      return res.send(response);
+    })
+    .catch(next);
+}
+function obtenerUsuariosPorTipo(req, res, next) {
+  let tipo = req.params.tipo;
+  Usuario.find({ tipo: tipo })
+    .then((users) => {
+      let response = [];
+      users.forEach((user) => {
+        response.push(user.publicData());
+      });
+      return res.send(response);
+    })
+    .catch(next);
+}
+function obtenerUsuariosPorStatus(req, res, next) {
+  let status = req.params.status;
+  Usuario.find({ status: status })
+    .then((users) => {
+      let response = [];
+      users.forEach((user) => {
+        response.push(user.publicData());
+      });
+      return res.send(response);
+    })
+    .catch(next);
+}
 
+function registrosLimitados(req, res, next) {
+  let lim = parseInt(req.params.limit);
+  Usuario.find()
+    .limit(lim)
+    .then((users) => {
+      let response = [];
+      users.forEach((user) => {
+        response.push(user.publicData());
+      });
+      return res.send(response);
+    })
+    .catch(next);
+}
 
 module.exports = {
   crearUsuario,
@@ -188,4 +231,8 @@ module.exports = {
   iniciarSesion,
   registrosLimitados,
   coincidenciaAtributos,
+  obtenerUsuariosPorNombre,
+  obtenerUsuariosPorApellido,
+  obtenerUsuariosPorTipo,
+  obtenerUsuariosPorStatus,
 };
