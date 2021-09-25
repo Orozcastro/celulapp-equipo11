@@ -102,63 +102,6 @@ function iniciarSesion(req, res, next) {
   )(req, res, next);
 }
 
-function coincidenciaAtributos(req, res, next) {
-  let matchAtribut = req.body;
-  var propiedad, atributo;
-  // Usuario.findById(req.usuario.id)
-  //   .then((user) => {
-  //     if (!user) {
-  //       return res.sendStatus(401);
-  //     }
-  if (typeof matchAtribut.nombre !== "undefined") {
-    propiedad = "nombre";
-    atributo = matchAtribut.nombre;
-  }
-  if (typeof matchAtribut.apellido !== "undefined") {
-    propiedad = "apellido";
-    atributo = matchAtribut.apellido;
-  }
-  if (typeof matchAtribut.tipo !== "undefined") {
-    propiedad = "tipo";
-    atributo = matchAtribut.tipo;
-  }
-  if (typeof matchAtribut.status !== "undefined") {
-    propiedad = "status";
-    atributo = matchAtribut.status;
-  }
-  Usuario.aggregate([
-    {
-      $match: {
-        apellido: atributo,
-      },
-    },
-  ])
-    .then((users) => {
-      let response = [];
-      users.forEach((user) => {
-        response.push(user.publicData());
-      });
-      return res.send(response);
-    })
-    .catch(next);
-  // let atributo = req.params.atributo;
-  // Usuario.aggregate([
-  //   {
-  //     $match: {
-  //       tipo: atributo,
-  //     },
-  //   },
-  // ])
-  //   .then((users) => {
-  //     let response = [];
-  //     users.forEach((user) => {
-  //       response.push(user.publicData());
-  //     });
-  //     return res.send(response);
-  //   })
-  //   .catch(next);
-}
-
 function obtenerUsuariosPorNombre(req, res, next) {
   let nombre = req.params.nombre;
   Usuario.find({ nombre: nombre })
@@ -171,7 +114,6 @@ function obtenerUsuariosPorNombre(req, res, next) {
     })
     .catch(next);
 }
-
 function obtenerUsuariosPorApellido(req, res, next) {
   let apellido = req.params.apellido;
   Usuario.find({ apellido: apellido })
@@ -223,6 +165,19 @@ function registrosLimitados(req, res, next) {
     .catch(next);
 }
 
+function obtenerPropiedadesEspecificas(req, res, next) {
+  let values = req.query.values;
+  Usuario.find({}, values.replace(/,/g, " "))
+    .then((users) => {
+      let response = [];
+      users.forEach((user) => {
+        response.push(user.publicData());
+      });
+      return res.send(response);
+    })
+    .catch(next);
+}
+
 module.exports = {
   crearUsuario,
   obtenerUsuarios,
@@ -230,9 +185,9 @@ module.exports = {
   eliminarUsuario,
   iniciarSesion,
   registrosLimitados,
-  coincidenciaAtributos,
   obtenerUsuariosPorNombre,
   obtenerUsuariosPorApellido,
   obtenerUsuariosPorTipo,
   obtenerUsuariosPorStatus,
+  obtenerPropiedadesEspecificas,
 };

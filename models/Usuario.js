@@ -91,15 +91,3 @@ UsuarioSchema.methods.publicData = function () {
   };
 };
 mongoose.model("Usuario", UsuarioSchema);
-
-/*** 
-{
-    "username": "ana",
-    "nombre": "ana",
-    "apellido": "jgomez",
-    "email": "agomez@gmail.com",
-    "password": "123",
-    "tipo": "Ventas",
-    "status": "0"
-}
-*/
