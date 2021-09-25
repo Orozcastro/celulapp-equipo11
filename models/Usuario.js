@@ -38,19 +38,6 @@ const UsuarioSchema = new mongoose.Schema(
 
 UsuarioSchema.plugin(uniqueValidator, { message: "Ya existe" });
 
-// Public data
-UsuarioSchema.methods.publicData = function() {
-  return {
-    id: this.id,
-    username: this.username,
-    nombre: this.nombre,
-    apellido: this.apellido,
-    email: this.email,
-    tipo: this.tipo,
-    status: this.status,
-  };
-}
-
 UsuarioSchema.methods.crearPassword = function (password) {
   this.salt = crypto.randomBytes(16).toString("hex");
   this.hash = crypto
@@ -60,7 +47,6 @@ UsuarioSchema.methods.crearPassword = function (password) {
 
 // // validar el password,
 UsuarioSchema.methods.validarPassword = function (password) {
-  // lo que se tiene en newhash(lo que dio el usuario) se compara con la cifrada que se guardo en la base de datos
   const newHash = crypto
     .pbkdf2Sync(password, this.salt, 10000, 512, "sha512")
     .toString("hex");
@@ -71,7 +57,7 @@ UsuarioSchema.methods.validarPassword = function (password) {
 UsuarioSchema.methods.generarJWT = function () {
   const today = new Date();
   const exp = new Date(today);
-  exp.setDate(today.getDate() + 30); // 60 días antes de expirar
+  exp.setDate(today.getDate() + 30);
 
   return jwt.sign(
     {
@@ -92,14 +78,16 @@ UsuarioSchema.methods.toAuthJSON = function () {
   };
 };
 
-mongoose.model('Usuario', UsuarioSchema);
-
-/*** Informacion{
-    "username": "ana",
-    "nombre": "ana",
-    "apellido": "jgomez",
-    "email": "agomez@gmail.com",
-    "password": "123",
-    "tipo": "Ventas",
-    "status": "0"
-}*/
+// Public data
+UsuarioSchema.methods.publicData = function () {
+  return {
+    id: this.id,
+    username: this.username,
+    nombre: this.nombre,
+    apellido: this.apellido,
+    email: this.email,
+    tipo: this.tipo,
+    status: this.status,
+  };
+};
+mongoose.model("Usuario", UsuarioSchema);

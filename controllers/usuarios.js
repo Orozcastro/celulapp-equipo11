@@ -21,23 +21,20 @@ function crearUsuario(req, res, next) {
 }
 
 function obtenerUsuarios(req, res, next) {
-    if (req.params.id) {
-      Usuario.findById(req.params.id)
-        .then((user) => {
-          if (!user) {
-            return res.sendStatus(401);
-          }
-          return res.json(user.publicData());
-        })
-        .catch(next);
-    }
-  else {
-    Usuario.find()
+  if (req.params.id) {
+    Usuario.findById(req.usuario.id, (err, user) => {
+      if (!user || err) {
+        return res.sendStatus(401);
+      }
+      return res.json(user.publicData());
+    }).catch(next);
+  } else {
+    Usuario.find({})
       .then((users) => {
-        let response = []
-        users.forEach(user => {
-          response.push(user.publicData())
-        })
+        let response = [];
+        users.forEach((user) => {
+          response.push(user.publicData());
+        });
         return res.send(response);
       })
       .catch(next);
@@ -105,19 +102,82 @@ function iniciarSesion(req, res, next) {
   )(req, res, next);
 }
 
-function registrosLimitados(req, res, next) {
-  let limit = parseInt(req.params.limit);
-
-  Usuario.aggregate([
-    {
-      $limit: limit,
-    },
-  ])
-    .then((r) => {
-      res.status(200).send(r);
+function obtenerUsuariosPorNombre(req, res, next) {
+  let nombre = req.params.nombre;
+  Usuario.find({ nombre: nombre })
+    .then((users) => {
+      let response = [];
+      users.forEach((user) => {
+        response.push(user.publicData());
+      });
+      return res.send(response);
     })
     .catch(next);
 }
+function obtenerUsuariosPorApellido(req, res, next) {
+  let apellido = req.params.apellido;
+  Usuario.find({ apellido: apellido })
+    .then((users) => {
+      let response = [];
+      users.forEach((user) => {
+        response.push(user.publicData());
+      });
+      return res.send(response);
+    })
+    .catch(next);
+}
+function obtenerUsuariosPorTipo(req, res, next) {
+  let tipo = req.params.tipo;
+  Usuario.find({ tipo: tipo })
+    .then((users) => {
+      let response = [];
+      users.forEach((user) => {
+        response.push(user.publicData());
+      });
+      return res.send(response);
+    })
+    .catch(next);
+}
+function obtenerUsuariosPorStatus(req, res, next) {
+  let status = req.params.status;
+  Usuario.find({ status: status })
+    .then((users) => {
+      let response = [];
+      users.forEach((user) => {
+        response.push(user.publicData());
+      });
+      return res.send(response);
+    })
+    .catch(next);
+}
+
+function registrosLimitados(req, res, next) {
+  let lim = parseInt(req.params.limit);
+  Usuario.find()
+    .limit(lim)
+    .then((users) => {
+      let response = [];
+      users.forEach((user) => {
+        response.push(user.publicData());
+      });
+      return res.send(response);
+    })
+    .catch(next);
+}
+
+function obtenerPropiedadesEspecificas(req, res, next) {
+  let values = req.query.values;
+  Usuario.find({}, values.replace(/,/g, " "))
+    .then((users) => {
+      let response = [];
+      users.forEach((user) => {
+        response.push(user.publicData());
+      });
+      return res.send(response);
+    })
+    .catch(next);
+}
+
 module.exports = {
   crearUsuario,
   obtenerUsuarios,
@@ -125,4 +185,9 @@ module.exports = {
   eliminarUsuario,
   iniciarSesion,
   registrosLimitados,
+  obtenerUsuariosPorNombre,
+  obtenerUsuariosPorApellido,
+  obtenerUsuariosPorTipo,
+  obtenerUsuariosPorStatus,
+  obtenerPropiedadesEspecificas,
 };
