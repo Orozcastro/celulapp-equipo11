@@ -6,7 +6,7 @@ La api cuenta con todos los métodos disponibles para ser utilizada desde una we
 
 **Link de la API celulapp:** [https://celulapp.herokuapp.com/v1/celulares](https://celulapp.herokuapp.com/v1/celulares)
 
-**Documentación de API celulapp:** [Documentacion](link-documentacion)
+**Documentación de API celulapp (Swagger):** [https://celulapp.herokuapp.com/api-docs/](https://celulapp.herokuapp.com/api-docs/)
 
 ## Integrantes del equipo 11
 
