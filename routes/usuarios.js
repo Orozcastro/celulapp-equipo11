@@ -24,8 +24,8 @@ router.post("/entrar", iniciarSesion);
 router.put("/:id", auth.requerido, modificarUsuario);
 router.delete("/eliminarUsuario/:id", auth.requerido, eliminarUsuario);
 
-router.get("/nombre/:nombre", obtenerUsuariosPorNombre);
-router.get("/apellido/:apellido", obtenerUsuariosPorApellido);
+router.get("/nombre/:nombre",auth.requerido, obtenerUsuariosPorNombre);
+router.get("/apellido/:apellido",auth.requerido, obtenerUsuariosPorApellido);
 router.get("/tipo/:tipo", auth.requerido, obtenerUsuariosPorTipo);
 router.get("/status/:status", auth.requerido, obtenerUsuariosPorStatus);
 

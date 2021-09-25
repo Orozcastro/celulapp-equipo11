@@ -59,8 +59,7 @@
             "in": "path",
             "description": "Id Usuario",
             "required": true,
-            "type": "string",
-            "format": "object"
+            "type": "string"
           }
         ],
         "security": [
@@ -87,6 +86,231 @@
         }
       }
     },
+    "/v1/usuarios/nombre/{nombre}": {
+      "get": {
+        "summary": "Obtiene datos del usuario por nombre.",
+        "tags": [
+          "Usuarios"
+        ],
+        "parameters": [
+          {
+            "name": "nombre",
+            "in": "path",
+            "description": "Nombre de Usuario",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Devuelve el objeto con los datos del usuario.",
+            "schema": {
+              "$ref": "#/definitions/Usuario"
+            }
+          },
+          "400": {
+            "description": "BadRequest, Error al consultar el usuario"
+          },
+          "401": {
+            "description": "Unauthorized. No se ha indicado o es incorrecto el Token JWT de acceso."
+          },
+          "404": {
+            "description": "NotFound. Usuario no encontrado."
+          }
+        }
+      }
+    },
+    "/v1/usuarios/apellido/{apellido}": {
+      "get": {
+        "summary": "Obtiene datos del usuario por apellido.",
+        "tags": [
+          "Usuarios"
+        ],
+        "parameters": [
+          {
+            "name": "nombre",
+            "in": "path",
+            "description": "Apellido del Usuario",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Devuelve el objeto con los datos del usuario.",
+            "schema": {
+              "$ref": "#/definitions/Usuario"
+            }
+          },
+          "400": {
+            "description": "BadRequest, Error al consultar el usuario"
+          },
+          "401": {
+            "description": "Unauthorized. No se ha indicado o es incorrecto el Token JWT de acceso."
+          },
+          "404": {
+            "description": "NotFound. Usuario no encontrado."
+          }
+        }
+      }
+    },
+    "/v1/usuarios/tipo/{tipo}": {
+      "get": {
+        "summary": "Obtiene datos del usuario por tipo.",
+        "tags": [
+          "Usuarios"
+        ],
+        "parameters": [
+          {
+            "name": "tipo",
+            "in": "path",
+            "description": "Tipo de Usuario",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Devuelve el objeto con los datos del usuario.",
+            "schema": {
+              "$ref": "#/definitions/Usuario"
+            }
+          },
+          "400": {
+            "description": "BadRequest, Error al consultar el usuario"
+          },
+          "401": {
+            "description": "Unauthorized. No se ha indicado o es incorrecto el Token JWT de acceso."
+          },
+          "404": {
+            "description": "NotFound. Usuario no encontrado."
+          }
+        }
+      }
+    },    
+    "/v1/usuarios/status/{tistatuspo}": {
+      "get": {
+        "summary": "Obtiene datos del usuario por status.",
+        "tags": [
+          "Usuarios"
+        ],
+        "parameters": [
+          {
+            "name": "status",
+            "in": "path",
+            "description": "Estatus del Usuario",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Devuelve el objeto con los datos del usuario.",
+            "schema": {
+              "$ref": "#/definitions/Usuario"
+            }
+          },
+          "400": {
+            "description": "BadRequest, Error al consultar el usuario"
+          },
+          "401": {
+            "description": "Unauthorized. No se ha indicado o es incorrecto el Token JWT de acceso."
+          },
+          "404": {
+            "description": "NotFound. Usuario no encontrado."
+          }
+        }
+      }
+    },   
+    "/v1/usuarios/limit/{limit}": {
+      "get": {
+        "summary": "Obtiene datos del usuario por limite.",
+        "tags": [
+          "Usuarios"
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "path",
+            "description": "Total de Usuarios",
+            "required": true,
+            "type": "int"
+          }
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Devuelve el objeto con los datos del usuario.",
+            "schema": {
+              "$ref": "#/definitions/Usuario"
+            }
+          },
+          "400": {
+            "description": "BadRequest, Error al consultar el usuario"
+          },
+          "401": {
+            "description": "Unauthorized. No se ha indicado o es incorrecto el Token JWT de acceso."
+          },
+          "404": {
+            "description": "NotFound. Usuario no encontrado."
+          }
+        }
+      }
+    },    
+    "/v1/usuarios/propiedades/": {
+      "get": {
+        "summary": "Obtiene todos los usuarios.",
+        "tags": [
+          "Usuarios"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Devuelve el objeto con los usuarios.",
+            "schema": {
+              "$ref": "#/definitions/Usuario"
+            }
+          },
+          "400": {
+            "description": "BadRequest, Error al consultar los usuarios"
+          },
+          "401": {
+            "description": "Unauthorized. No se ha indicado o es incorrecto el Token JWT de acceso."
+          },
+          "404": {
+            "description": "NotFound. Usuarios no encontrados."
+          }
+        }
+      }
+    },      
     "/v1/usuarios": {
       "post": {
         "summary": "Crear nuevo usuario.",
@@ -231,7 +455,7 @@
         }
       }
     },
-    "/v1/celulares/{1}": {
+    "/v1/celulares/{id}": {
       "get": {
         "summary": "Obtiene datos del celular.",
         "tags": [
@@ -321,7 +545,7 @@
           {
             "name": "so",
             "in": "path",
-            "description": "sistema Operativo",
+            "description": "Sistema Operativo",
             "required": true,
             "type": "string",
             "format": "object"
@@ -353,7 +577,7 @@
     },
     "/v1/celulares/ram/{ram}": {
       "get": {
-        "summary": "Obtiene los celulares por RAM.",
+        "summary": "Obtiene los celulares por Memoria RAM.",
         "tags": [
           "Celulares"
         ],
@@ -361,7 +585,7 @@
           {
             "name": "ram",
             "in": "path",
-            "description": "RAM",
+            "description": "Memoria RAM",
             "required": true,
             "type": "string",
             "format": "object"
@@ -447,7 +671,7 @@
             "description": "",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/CelularUpdate"
+              "$ref": "#/definitions/Celular"
             }
           }
         ],
@@ -583,22 +807,78 @@
         }
       },
       "Celular": {
+        "required": [
+          "camara",
+          "color",
+          "_id",
+          "marca",
+          "modelo",
+          "almacenamiento_gb",
+          "ram_gb",
+          "peso_gr",
+          "bateria_mAh",
+          "tamano_pantalla_in",
+          "sistema_operativo"
+        ],
+        "type": "object",
         "properties": {
-          "id": {
+          "camara": {
+            "type": "object",
+            "additionalProperties":{
+              "type": "string"
+            },
+            "example": {
+              "trasera_Mpx":"",
+              "frontal_Mpx":""
+            }
+          },
+          "color": {
+            "type": "object",
+            "enum": [
+              "negro",
+              "azul",
+              "bronce"
+            ],
+            "example": [
+              "negro",
+              "azul",
+              "bronce"
+            ]
+          },
+          "_id": {
             "type": "string"
           },
           "marca": {
+            "maxLength": 15,
+            "minLength": 3,
             "type": "string"
           },
           "modelo": {
+            "maxLength": 15,
+            "minLength": 2,
+            "type": "string"
+          },
+          "almacenamiento_gb": {
+            "type": "integer"
+          },
+          "ram_gb": {
+            "type": "integer"
+          },
+          "peso_gr": {
+            "type": "integer"
+          },
+          "bateria_mAh": {
+            "type": "integer"
+          },
+          "tamano_pantalla_in": {
+            "type": "number"
+          },
+          "sistema_operativo": {
+            "maxLength": 15,
+            "minLength": 2,
             "type": "string"
           }
-        },
-        "required": [
-          "id",
-          "marca",
-          "modelo"
-        ]
+        }
       },
       "CelularUpdate": {
         "required": [
@@ -754,56 +1034,87 @@
     },
     "Celular": {
       "required": [
+        "camara",
+        "color",
         "marca",
         "modelo",
-        "sistemaOperativo",
-        "ram",
-        "almacenamiento",
-        "color"
+        "almacenamiento_gb",
+        "ram_gb",
+        "peso_gr",
+        "bateria_mAh",
+        "tamano_pantalla_in",
+        "sistema_operativo"
       ],
       "type": "object",
       "properties": {
+        "camara": {
+          "type": "object",
+          "additionalProperties":{
+            "type": "string"
+          },
+          "example": {
+            "trasera_Mpx":"",
+            "frontal_Mpx":""
+          }
+        },
+        "color": {
+          "type": "object",
+          "enum": [
+            "negro",
+            "azul",
+            "bronce"
+          ],
+          "example": [
+            "negro",
+            "azul",
+            "bronce"
+          ]
+        },
         "marca": {
-          "maxLength": 10,
-          "minLength": 4,
+          "maxLength": 15,
+          "minLength": 3,
           "type": "string"
         },
         "modelo": {
-          "maxLength": 20,
-          "minLength": 4,
+          "maxLength": 15,
+          "minLength": 2,
           "type": "string"
         },
-        "sistemaOperativo": {
-          "maxLength": 10,
-          "minLength": 3,
-          "type": "string"
+        "almacenamiento_gb": {
+          "type": "integer"
         },
-        "ram": {
-          "maxLength": 10,
-          "minLength": 3,
-          "type": "string"
+        "ram_gb": {
+          "type": "integer"
         },
-        "almacenamiento": {
-          "maxLength": 10,
-          "minLength": 3,
-          "type": "string"
+        "peso_gr": {
+          "type": "integer"
         },
-        "color": {
-          "maxLength": 10,
-          "minLength": 3,
+        "bateria_mAh": {
+          "type": "integer"
+        },
+        "tamano_pantalla_in": {
+          "type": "number"
+        },
+        "sistema_operativo": {
+          "maxLength": 15,
+          "minLength": 2,
           "type": "string"
         }
       }
     },
     "CelularUpdate": {
       "required": [
-        "id",
+        "camara",
+        "color",
+        "_id",
         "marca",
         "modelo",
-        "sistemaOperativo",
-        "ram",
-        "almacenamiento",
-        "color"
+        "almacenamiento_gb",
+        "ram_gb",
+        "peso_gr",
+        "bateria_mAh",
+        "tamano_pantalla_in",
+        "sistema_operativo"
       ],
       "type": "object",
       "properties": {

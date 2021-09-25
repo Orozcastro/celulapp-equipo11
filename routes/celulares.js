@@ -9,16 +9,18 @@ const {
   obtenerCelularesPorRAM,
   obtenerPropiedadesEspecificas,
 } = require('../controllers/celulares');
+const auth = require("./auth");
 
 router.get('/propiedades', obtenerPropiedadesEspecificas);
 
-router.get('/', obtenerCelulares);
-router.post('/crearCelular', crearCelular);
-router.put('/modificarCelular', modificarCelular);
-router.delete('/eliminarCelular/:id', eliminarCelular);
+router.get('/',auth.requerido, obtenerCelulares);
+router.post('/crearCelular',auth.requerido, crearCelular);
+router.put('/modificarCelular',auth.requerido, modificarCelular);
+router.get("/:id",auth.requerido, obtenerCelulares);
+router.delete('/eliminarCelular/:id',auth.requerido, eliminarCelular);
 
-router.get('/marca/:marca', obtenerCelularesPorMarca);
-router.get('/so/:so', obtenerCelularesPorSO);
-router.get('/ram/:ram', obtenerCelularesPorRAM);
+router.get('/marca/:marca',auth.requerido, obtenerCelularesPorMarca);
+router.get('/so/:so',auth.requerido, obtenerCelularesPorSO);
+router.get('/ram/:ram',auth.requerido, obtenerCelularesPorRAM);
 
 module.exports = router;

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+const secret = require("../config").secret;
 
 const celularSchema = new Schema(
   {
