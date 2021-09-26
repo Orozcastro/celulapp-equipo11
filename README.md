@@ -1,13 +1,14 @@
 # CelulApp
 # Api para celulares E-Commerce
 
+## 📱 Link de API Celulapp: [https://celulapp.herokuapp.com/v1](https://celulapp.herokuapp.com/v1)
+
+## 📃 Documentación de API Celulapp (Swagger): [https://celulapp.herokuapp.com/api-docs/](https://celulapp.herokuapp.com/api-docs/)
+
+## 📷 Funcionamiento de la API Celulapp: [Video](https://www.canva.com/design/DAEq8D8X8ls/PqPdmG1D-MajAuxBoe5mQw/watch?utm_content=DAEq8D8X8ls&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
+
 Api para alta, baja y cambio de catálogos de celulares.
 La api cuenta con todos los métodos disponibles para ser utilizada desde una web app o app movil.
-
-**Link de la API celulapp:** [https://celulapp.herokuapp.com/v1](https://celulapp.herokuapp.com/v1)
-
-**Documentación de API celulapp (Swagger):** [https://celulapp.herokuapp.com/api-docs/](https://celulapp.herokuapp.com/api-docs/)
-
 ## Integrantes del equipo 11
 
 - María Fernanda Orozco Castro [@Orozcastro](https://www.github.com/Orozcastro)
