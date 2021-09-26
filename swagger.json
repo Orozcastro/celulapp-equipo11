@@ -14,7 +14,7 @@
       "url": "web.com"
     }
   },
-  "host": "localhost:4001",
+  "host": "celulapp.herokuapp.com/v1",
   "basePath": "/",
   "paths": {
     "/v1/usuarios/": {
@@ -286,6 +286,16 @@
         "summary": "Obtiene todos los usuarios.",
         "tags": [
           "Usuarios"
+        ],
+        "parameters": [
+          {
+            "name": "values",
+            "in": "query",
+            "description": "Usuario perosonalizado",
+            "required": true,
+            "type": "string",
+            "example": "username,nombre,apellido"
+          }
         ],
         "security": [
           {
@@ -738,6 +748,46 @@
           },
           "404": {
             "description": "NotFound. Celular no encontrado."
+          }
+        }
+      }
+    },
+    "/v1/celulares/propiedades": {
+      "get": {
+        "summary": "Obtiene celulares personalizado.",
+        "tags": [
+          "Celulares"
+        ],
+        "parameters": [
+          {
+            "name": "values",
+            "in": "query",
+            "description": "Celular perosonalizado",
+            "required": true,
+            "type": "string",
+            "example": "marca,ram_gb,gb_modelo"
+          }
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Devuelve el objeto con los celulares.",
+            "schema": {
+              "$ref": "#/definitions/Celular"
+            }
+          },
+          "400": {
+            "description": "BadRequest, Error al consultar los celulares"
+          },
+          "401": {
+            "description": "Unauthorized. No se ha indicado o es incorrecto el Token JWT de acceso."
+          },
+          "404": {
+            "description": "NotFound. Celulares no encontrados."
           }
         }
       }
