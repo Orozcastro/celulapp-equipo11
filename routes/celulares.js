@@ -11,7 +11,7 @@ const {
 } = require('../controllers/celulares');
 const auth = require("./auth");
 
-router.get('/propiedades', obtenerPropiedadesEspecificas);
+router.get('/propiedades', auth.requerido, obtenerPropiedadesEspecificas);
 
 router.get('/',auth.requerido, obtenerCelulares);
 router.post('/crearCelular',auth.requerido, crearCelular);
