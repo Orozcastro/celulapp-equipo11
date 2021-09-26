@@ -37,14 +37,13 @@ function obtenerCelulares(req, res, next) {
 }
 
 function modificarCelular(req, res, next) {
-  console.log(req.celular._id);
-  Celular.findById(req.celular._id)
+  Celular.findById(req.params.id)
     .then(celular => {
       if (!celular) return res.sendStatus(404);
       Celular.updateOne(celular, req.body)
         .then(updated => {
           if (updated.nModified > 0) {
-            Celular.findById(celular._id)
+            Celular.findById(req.params.id)
               .then(c => res.send(c.publicData()))
               .catch(next);
           }

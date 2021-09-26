@@ -46,7 +46,7 @@
           }
         }
       }
-    },    
+    },
     "/v1/usuarios/{id}": {
       "get": {
         "summary": "Obtiene datos del usuario.",
@@ -202,7 +202,7 @@
           }
         }
       }
-    },    
+    },
     "/v1/usuarios/status/{tistatuspo}": {
       "get": {
         "summary": "Obtiene datos del usuario por status.",
@@ -241,7 +241,7 @@
           }
         }
       }
-    },   
+    },
     "/v1/usuarios/limit/{limit}": {
       "get": {
         "summary": "Obtiene datos del usuario por limite.",
@@ -280,7 +280,7 @@
           }
         }
       }
-    },    
+    },
     "/v1/usuarios/propiedades/": {
       "get": {
         "summary": "Obtiene todos los usuarios.",
@@ -310,7 +310,7 @@
           }
         }
       }
-    },      
+    },
     "/v1/usuarios": {
       "post": {
         "summary": "Crear nuevo usuario.",
@@ -614,7 +614,7 @@
           }
         }
       }
-    },    
+    },
     "/v1/celulares/crearCelular/": {
       "post": {
         "summary": "Crear nuevo celular.",
@@ -653,7 +653,7 @@
         }
       }
     },
-    "/v1/celulares/modificarCelular": {
+    "/v1/celulares/modificarCelular/{id}": {
       "put": {
         "summary": "Modificar celular.",
         "tags": [
@@ -673,6 +673,14 @@
             "schema": {
               "$ref": "#/definitions/Celular"
             }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id Celular",
+            "required": true,
+            "type": "string",
+            "format": "object"
           }
         ],
         "responses": {
@@ -824,12 +832,12 @@
         "properties": {
           "camara": {
             "type": "object",
-            "additionalProperties":{
+            "additionalProperties": {
               "type": "string"
             },
             "example": {
-              "trasera_Mpx":"",
-              "frontal_Mpx":""
+              "trasera_Mpx": "",
+              "frontal_Mpx": ""
             }
           },
           "color": {
@@ -892,7 +900,9 @@
         ],
         "type": "object",
         "properties": {
-          "id":{"type":"string"},
+          "id": {
+            "type": "string"
+          },
           "marca": {
             "maxLength": 10,
             "minLength": 4,
@@ -1049,12 +1059,12 @@
       "properties": {
         "camara": {
           "type": "object",
-          "additionalProperties":{
+          "additionalProperties": {
             "type": "string"
           },
           "example": {
-            "trasera_Mpx":"",
-            "frontal_Mpx":""
+            "trasera_Mpx": "",
+            "frontal_Mpx": ""
           }
         },
         "color": {
@@ -1118,7 +1128,9 @@
       ],
       "type": "object",
       "properties": {
-        "id":{"type":"string"},
+        "id": {
+          "type": "string"
+        },
         "marca": {
           "maxLength": 10,
           "minLength": 4,
