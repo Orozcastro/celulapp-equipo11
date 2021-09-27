@@ -14,7 +14,7 @@
       "url": "web.com"
     }
   },
-  "host": "celulapp.herokuapp.com/v1",
+  "host": "celulapp.herokuapp.com",
   "basePath": "/",
   "paths": {
     "/v1/usuarios/": {
