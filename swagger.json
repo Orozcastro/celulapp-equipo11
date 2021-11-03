@@ -876,7 +876,9 @@
           "peso_gr",
           "bateria_mAh",
           "tamano_pantalla_in",
-          "sistema_operativo"
+          "sistema_operativo",
+          "imagenes",
+          "precio"
         ],
         "type": "object",
         "properties": {
@@ -935,6 +937,20 @@
             "maxLength": 15,
             "minLength": 2,
             "type": "string"
+          },
+          "imagenes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "example": [
+              "http:\\imagen1.jpg",
+              "http:\\imagen2.jpg",
+              "http:\\imagen3.jpg"
+            ]
+          },
+          "precio": {
+            "type": "number"
           }
         }
       },
@@ -1103,7 +1119,10 @@
         "peso_gr",
         "bateria_mAh",
         "tamano_pantalla_in",
-        "sistema_operativo"
+        "sistema_operativo",
+        "imagenes",
+        "createdAt",
+        "updatedAt"
       ],
       "type": "object",
       "properties": {
@@ -1159,6 +1178,26 @@
           "maxLength": 15,
           "minLength": 2,
           "type": "string"
+        },
+        "imagenes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "example": [
+            "http:\\imagen1.jpg",
+            "http:\\imagen2.jpg",
+            "http:\\imagen3.jpg"
+          ]
+        },
+        "precio": {
+          "type": "number"
+        },
+        "createdAt":{
+          "type":"string"
+        },
+        "updatedAt":{
+          "type":"string"
         }
       }
     },
@@ -1174,7 +1213,9 @@
         "peso_gr",
         "bateria_mAh",
         "tamano_pantalla_in",
-        "sistema_operativo"
+        "sistema_operativo",
+        "imagenes",
+        "precio"
       ],
       "type": "object",
       "properties": {
