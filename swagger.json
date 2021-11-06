@@ -441,11 +441,6 @@
         "tags": [
           "Celulares"
         ],
-        "security": [
-          {
-            "Bearer": []
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK. Devuelve el objeto con los celulares.",
@@ -479,11 +474,6 @@
             "required": true,
             "type": "string",
             "format": "object"
-          }
-        ],
-        "security": [
-          {
-            "Bearer": []
           }
         ],
         "responses": {
@@ -521,11 +511,6 @@
             "format": "object"
           }
         ],
-        "security": [
-          {
-            "Bearer": []
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK. Devuelve el objeto con los celulares.",
@@ -561,11 +546,6 @@
             "format": "object"
           }
         ],
-        "security": [
-          {
-            "Bearer": []
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK. Devuelve el objeto con los celulares.",
@@ -599,11 +579,6 @@
             "required": true,
             "type": "string",
             "format": "object"
-          }
-        ],
-        "security": [
-          {
-            "Bearer": []
           }
         ],
         "responses": {
