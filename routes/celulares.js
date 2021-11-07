@@ -16,7 +16,7 @@ router.get('/propiedades', auth.requerido, obtenerPropiedadesEspecificas);
 router.get('/', obtenerCelulares);
 router.post('/crearCelular', crearCelular);
 router.put('/modificarCelular/:id',auth.requerido, modificarCelular);
-router.get("/:id",auth.requerido, obtenerCelulares);
+router.get("/:id", obtenerCelulares);
 router.delete('/eliminarCelular/:id',auth.requerido, eliminarCelular);
 
 router.get('/marca/:marca', obtenerCelularesPorMarca);
