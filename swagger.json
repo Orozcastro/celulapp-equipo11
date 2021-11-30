@@ -606,6 +606,11 @@
         "tags": [
           "Celulares"
         ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
         "parameters": [
           {
             "name": "celular",

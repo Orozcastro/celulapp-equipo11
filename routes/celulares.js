@@ -14,7 +14,7 @@ const auth = require("./auth");
 router.get('/propiedades', auth.requerido, obtenerPropiedadesEspecificas);
 
 router.get('/', obtenerCelulares);
-router.post('/crearCelular', crearCelular);
+router.post('/crearCelular',auth.requerido, crearCelular);
 router.put('/modificarCelular/:id',auth.requerido, modificarCelular);
 router.get("/:id", obtenerCelulares);
 router.delete('/eliminarCelular/:id',auth.requerido, eliminarCelular);
