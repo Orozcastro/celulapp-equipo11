@@ -17,7 +17,7 @@ const celularSchema = new Schema(
     },
     color: [],
     sistema_operativo: { type: String, required: true },
-    imagenes:[],
+    images:[],
     precio: { type: Number, required: true },
     createdAt: Date,
     updatedAt: Date,
@@ -38,7 +38,7 @@ celularSchema.methods.publicData = function () {
     camara: this.camara,
     color: this.color,
     sistema_operativo: this.sistema_operativo,
-    imagenes: this.imagenes,
+    images: this.images,
     precio: this.precio,
     createdAt: this.createdAt,
     updatedAt: this.updatedAt

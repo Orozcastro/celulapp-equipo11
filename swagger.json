@@ -852,7 +852,7 @@
           "bateria_mAh",
           "tamano_pantalla_in",
           "sistema_operativo",
-          "imagenes",
+          "images",
           "precio"
         ],
         "type": "object",
@@ -913,7 +913,7 @@
             "minLength": 2,
             "type": "string"
           },
-          "imagenes": {
+          "images": {
             "type": "object",
             "additionalProperties": {
               "type": "string"
@@ -1095,7 +1095,7 @@
         "bateria_mAh",
         "tamano_pantalla_in",
         "sistema_operativo",
-        "imagenes",
+        "images",
         "createdAt",
         "updatedAt"
       ],
@@ -1154,7 +1154,7 @@
           "minLength": 2,
           "type": "string"
         },
-        "imagenes": {
+        "images": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
@@ -1189,7 +1189,7 @@
         "bateria_mAh",
         "tamano_pantalla_in",
         "sistema_operativo",
-        "imagenes",
+        "images",
         "precio"
       ],
       "type": "object",
