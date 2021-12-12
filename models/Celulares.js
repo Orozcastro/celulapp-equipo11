@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const secret = require("../config").secret;
 
@@ -17,12 +17,12 @@ const celularSchema = new Schema(
     },
     color: [],
     sistema_operativo: { type: String, required: true },
-    images:[],
+    images: [],
     precio: { type: Number, required: true },
     createdAt: Date,
     updatedAt: Date,
   },
-  { collection: 'celulares', timestamps: true }
+  { collection: "celulares", timestamps: true }
 );
 
 celularSchema.methods.publicData = function () {
@@ -41,8 +41,8 @@ celularSchema.methods.publicData = function () {
     images: this.images,
     precio: this.precio,
     createdAt: this.createdAt,
-    updatedAt: this.updatedAt
+    updatedAt: this.updatedAt,
   };
 };
 
-mongoose.model('Celular', celularSchema);
+mongoose.model("Celular", celularSchema);
